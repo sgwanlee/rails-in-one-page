@@ -2,9 +2,6 @@
 Cheat sheet
 ## Counter cache
 
-
-``` add_column :klass, :students_count, default: 0```
-
 student.rb
 
     class student < ActiveRecord::Base
@@ -16,4 +13,8 @@ klass.rb
       has_many :students
 
 
+migration file
 
+    add_column :klass, :students_count, default: 0
+    Klass.find_each { |k| Klass.reset_counters(k.id, :students) }
+    
