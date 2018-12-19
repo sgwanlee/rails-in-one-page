@@ -14,7 +14,8 @@ klass.rb
 
 
 migration file
-
-    add_column :klass, :students_count, default: 0
-    Klass.find_each { |k| Klass.reset_counters(k.id, :students) }
     
+    def change
+        add_column :klass, :students_count, default: 0
+        Klass.find_each { |k| Klass.reset_counters(k.id, :students) }
+    end    
